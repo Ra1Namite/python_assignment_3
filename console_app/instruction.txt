@@ -1,0 +1,3 @@
+- type 'python3 main.py --help' 
+- follow appropriate commands
+
