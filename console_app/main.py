@@ -23,7 +23,7 @@ def getstudents():
 
 
 @app.command()
-def enroll(name: str, deposit: int, courses: str):
+def enroll(name, deposit, courses):
     s = Students()
     c = Courses()
     if deposit != 20000 and deposit != 10000:
@@ -35,7 +35,7 @@ def enroll(name: str, deposit: int, courses: str):
 
 
 @app.command()
-def update(id: str, name: str = None, deposit: int = None):
+def update(id, name = None, deposit = None):
     s = Students()
     if deposit != 20000 and deposit != 10000:
         raise typer.BadParameter("Deposit can only be 20000 or on installments of 10000")
@@ -44,7 +44,7 @@ def update(id: str, name: str = None, deposit: int = None):
 
 
 @app.command()
-def addcourse(id: str, courses: List[str]):
+def addcourse(id, courses):
     s = Students()
     c = Courses()
     for course in courses:
@@ -64,7 +64,7 @@ def getstudentsdetail():
 
 
 @app.command()
-def getcoursesdetail(course: str = None):
+def getcoursesdetail(course = None):
     c = Courses()
     print("Course    Enrolled     Description")
     for i in c.getCoursesDetail(course):
@@ -72,7 +72,7 @@ def getcoursesdetail(course: str = None):
 
 
 @app.command()
-def delete(id: int):
+def delete(id):
     s = Students()
     name = s.delete(id)
     print(f"{name} deleted")
